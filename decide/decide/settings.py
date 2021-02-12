@@ -73,7 +73,7 @@ MODULES = [
     'voting',
 ]
 
-BASEURL = 'http://localhost:8000'
+BASEURL = 'https://egc-1230-dansanbal.herokuapp.com'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -183,3 +183,18 @@ if os.path.exists("config.jsonnet"):
 
 
 INSTALLED_APPS = INSTALLED_APPS + MODULES
+
+APIS = {
+    'authentication': 'https://egc-1230-dansanbal.herokuapp.com',
+    'base': 'https://egc-1230-dansanbal.herokuapp.com',
+    'booth': 'https://egc-1230-dansanbal.herokuapp.com',
+    'census': 'https://egc-1230-dansanbal.herokuapp.com',
+    'mixnet': 'https://egc-1230-dansanbal.herokuapp.com',
+    'postproc': 'https://egc-1230-dansanbal.herokuapp.com',
+    'store': 'https://egc-1230-dansanbal.herokuapp.com',
+    'visualizer': 'https://egc-1230-dansanbal.herokuapp.com',
+    'voting': 'https://egc-1230-dansanbal.herokuapp.com',
+}
+
+import django_heroku
+django_heroku.settings(locals())

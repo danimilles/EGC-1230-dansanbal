@@ -9,6 +9,8 @@ before_script:
   - psql -U postgres -c "create database test_decide owner decide"
   - psql -U postgres -c "ALTER USER decide CREATEDB"
 language: python
+env:
+  - CODACY_PROJECT_TOKEN=44bfe82789bc4961be27f5532cab04bb
 python:
   - "3.6"
 install:
@@ -16,6 +18,12 @@ install:
   - pip install codacy-coverage
 script:
   - cd decide
-  - coverage run --branch --source=. ./manage.py test --keepdb --with-xunit
+  - coverage run --branch --source=. ./manage.py test postproc --keepdb
   - coverage xml
   - python-codacy-coverage -r coverage.xml
+notifications:
+  email:
+    recipients:
+      - dansanbal@alum.us.es
+    on_success: never 
+    on_failure: always
